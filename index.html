@@ -19,6 +19,7 @@
             </a>
             <button class="site-header__toggle-btn " type="button" @click="showNav"></button>
           </div>
+
           <nav class="sitenav">
             <ul class="sitenav__list">
               <li class="sitenav__item"   v-for="(planetName, index) in planetNames">
@@ -28,10 +29,13 @@
           </nav>
         </div>
       </header>
+
+
       <main class="site-main">
         <div class="site-main__container">
           <section class="planet">
             <div class="planet__img"><img :src="planets[selectedPlanetId].features[selectedPlanetFeatureId].img" alt="planet img" width="336" height="448"></div>
+
             <div class="planet__about">
               <div class="planet__output">
                 <h1 class="planet__title"> {{ planets[selectedPlanetId].name }} </h1>
@@ -40,21 +44,20 @@
                   Source : <a :href="planets[selectedPlanetId].wikipediaLink"  class="planet__source-link">Wikipedia</a>
                 </p>
               </div>
+
               <ol class="planet__list">
                 <li class="planet__item" :style="[selectedPlanetFeatureId == index ? {backgroundColor: planets[selectedPlanetId].backgroundColor}: {backgroundColor: 'transparent'}]"  v-for="(feature, index) in planets[selectedPlanetId].features"  @click="chooseFeature(index)">
                   <span class="planet__span"> {{ feature.name }} </span>
                 </li>
-
               </ol>
             </div>
           </section>
+
           <section class="planet-info">
             <ul class="planet-info__list">
               <li class="planet-info__item" v-for="about in planets[selectedPlanetId].abouts">
                 <h2 class="planet-info__title"> {{ about.name }} </h2>
                 <p class="planet-info__text"> {{ about.data }} </p>
-              </li>
-
               </li>
             </ul>
           </section>
